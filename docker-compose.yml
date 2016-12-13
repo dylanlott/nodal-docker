@@ -1,0 +1,16 @@
+version: '2'
+services:
+  database:
+    image: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: ''
+      POSTGRES_DB: 'nodal_docker_development'
+  nodal:
+    build: .
+    ports:
+      - '3000:3000'
+    links:
+      - database
